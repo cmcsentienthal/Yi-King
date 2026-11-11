@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yi King — Le Livre des changements</title>
+<title>Yi King ou le Livre des transformations</title>
 <style>
 :root{
   --bg:#FFF8E7; --bg2:#FFF1CC; --card:#FFFFFF; --ink:#2B2A52; --soft:#5E5C86; --line:#F3DFA8;
@@ -37,6 +37,8 @@ header.top{display:flex;align-items:center;gap:12px;padding:18px 0 6px}
 h1{font-family:Georgia,"Noto Serif","DejaVu Serif",serif;font-size:1.7rem;margin:0;line-height:1.1;letter-spacing:.01em}
 .sub{color:var(--soft);font-size:.86rem;margin-top:3px}
 .grow{flex:1;min-width:0}
+.credit{margin:26px 0 6px;color:var(--soft);font-family:Georgia,"Noto Serif",serif;font-style:italic}
+.h1s{font-size:.62em;font-weight:400;font-style:italic;white-space:nowrap}
 .iconbtn{border:0;background:var(--card);color:var(--ink);width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer;box-shadow:var(--shadow);flex:none}
 nav.tabs{display:flex;gap:8px;margin:14px 0 20px;flex-wrap:wrap}
 nav.tabs button{flex:1 1 auto;border:0;padding:11px 14px;border-radius:999px;font:inherit;font-weight:700;font-size:.95rem;cursor:pointer;background:var(--card);color:var(--ink);box-shadow:var(--shadow);min-height:46px}
@@ -118,6 +120,10 @@ html[data-theme="dark"] .linkbtn{color:#FFD21F}
 .sec{border-left:6px solid var(--o);padding:4px 0 4px 16px;margin:18px 0}
 .sec.t{border-color:var(--r)}
 .sec.m{border-color:var(--g)}
+.sec.key{background:var(--note);border-radius:0 16px 16px 0;padding:10px 12px 8px 16px}
+.lire{display:inline-block;margin-bottom:6px;padding:3px 12px;border-radius:999px;background:var(--grad);color:#fff;font-weight:800;font-size:.82rem;text-shadow:0 1px 2px rgba(120,30,0,.3)}
+.regle{border:3px solid var(--o)}
+.regle h3{margin-bottom:6px}
 .sec .tag{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:4px}
 details{margin-top:6px}
 summary{cursor:pointer;font-weight:700;color:var(--soft);padding:8px 0;list-style:none;display:flex;align-items:center;gap:8px;min-height:44px}
@@ -174,8 +180,7 @@ html[data-theme="dark"] .entry .mini{color:#FFD21F}
   <header class="top">
     <div class="logo" aria-hidden="true"><div class="mini" id="logoHex"></div></div>
     <div class="grow">
-      <h1>Yi King</h1>
-      <div class="sub">Le Livre des changements — traduction de P.-L.-F. Philastre (1885)</div>
+      <h1>Yi King <span class="h1s">ou le Livre des transformations</span></h1>
     </div>
     <button class="iconbtn" id="themeBtn" title="Mode clair / mode nuit" aria-label="Changer de mode clair ou nuit">☾</button>
   </header>
@@ -236,6 +241,7 @@ html[data-theme="dark"] .entry .mini{color:#FFD21F}
       <div class="card"><input type="search" id="search" placeholder="Chercher par numéro ou par nom (ex. 11, Thae, prospérité)…" aria-label="Chercher un koua"></div>
       <div class="grid" id="grid"></div>
       <p class="muted center hide" id="noRes">Aucun koua ne correspond à cette recherche.</p>
+      <p class="center credit">Traduction de P.-L.-F. Philastre (1885)</p>
     </div>
     <div id="b-one" class="hide"></div>
   </section>
@@ -265,7 +271,17 @@ html[data-theme="dark"] .entry .mini{color:#FFD21F}
       <p>Le caractère chinois affiché à côté du nom de chaque koua ne vient pas de Philastre : c’est le nom du koua en écriture chinoise, ajouté comme repère.</p>
       <h3>Lecture d’un tirage</h3>
       <p>Les traits se tracent du bas vers le haut. Les valeurs 7 et 9 donnent un trait plein (nonaire), les valeurs 6 et 8 un trait brisé (hexaire). Les valeurs 6 et 9 désignent les traits qui se transforment : 9 devient un trait brisé, 6 devient un trait plein. Le second koua est celui obtenu après transformation.</p>
-      <p>L’application affiche la formule du koua obtenu, les formules de ses traits qui se transforment, puis la formule du second koua. Pour les koua 1 et 2, quand les six traits se transforment, elle affiche aussi la formule « Emploi des traits ». Toutes les autres formules restent consultables dans « Les 64 koua ».</p>
+      <p>Après un tirage, l’application indique quel texte répond à la question, selon la règle fixée par Tshou Hi (Zhu Xi) dans son <i>Introduction à l’étude du Livre des changements</i>. Les textes à lire sont marqués d’une étoile ★.</p>
+      <ul>
+        <li>Aucun trait ne se transforme : la formule du koua obtenu.</li>
+        <li>Un trait : la formule de ce trait.</li>
+        <li>Deux traits : leurs deux formules ; celle du trait le plus haut domine.</li>
+        <li>Trois traits : la formule des deux koua ; le premier représente la situation présente, le second l’issue.</li>
+        <li>Quatre traits : les deux traits qui ne se transforment pas, lus dans le second koua ; le plus bas domine.</li>
+        <li>Cinq traits : le seul trait qui ne se transforme pas, lu dans le second koua.</li>
+        <li>Six traits : la formule du second koua ; pour les koua 1 et 2, la formule « Emploi des traits ».</li>
+      </ul>
+      <p class="muted">Source de ces règles : traduction anglaise de Joseph A. Adler (2002), résumée par Russell Cottrell. Pour trois traits, la règle précise aussi lequel des deux koua domine ; son sens exact est discuté, l’application ne le retient pas.</p>
       <h3>Trois pièces</h3>
       <p>Trois pièces sont lancées pour chaque trait. Un côté compte 3, l’autre compte 2. La somme donne 6, 7, 8 ou 9.</p>
       <h3>Baguettes d’achillée</h3>
@@ -451,6 +467,18 @@ function secBlock(tag,cls,s,label){
   det.addEventListener('toggle',function(){if(det.open&&!com.firstChild)com.innerHTML=s.h;});
   d.appendChild(det);return d;
 }
+function rule(h1,h2,n,mut,keep){
+  var ord=function(i){return RANG[i].toLowerCase();};
+  var m;
+  if(n===0)m='Aucun trait ne se transforme : la réponse est la formule du koua obtenu.';
+  else if(n===1)m='Un seul trait se transforme : la réponse est la formule de ce trait ('+ord(mut[0])+').';
+  else if(n===2)m='Deux traits se transforment : on lit leurs deux formules, mais celle du trait le plus haut ('+ord(Math.max(mut[0],mut[1]))+') domine.';
+  else if(n===3)m='Trois traits se transforment : on lit la formule des deux koua. Le premier représente la situation présente, le second l’issue.';
+  else if(n===4)m='Quatre traits se transforment : on lit, dans le second koua, les deux traits qui ne se transforment pas ('+ord(keep[0])+' et '+ord(keep[1])+'). Le plus bas domine.';
+  else if(n===5)m='Cinq traits se transforment : on lit, dans le second koua, le seul trait qui ne se transforme pas ('+ord(keep[0])+').';
+  else m=(h1.n===1||h1.n===2)?'Les six traits se transforment à partir du koua '+h1.n+' : on lit la formule « Emploi des traits ».':'Les six traits se transforment : la réponse est la formule du second koua.';
+  return {msg:m};
+}
 function sOf(h,id){for(var i=0;i<h.s.length;i++)if(h.s[i].id===id)return h.s[i];return null;}
 var RANG=['Premier trait','Deuxième trait','Troisième trait','Quatrième trait','Cinquième trait','Trait supérieur'];
 function hexCol(h,vals,title){
@@ -474,12 +502,34 @@ function showResult(e,fresh){
   card.appendChild(pair);
   card.appendChild(el('p','muted center',mut.length?('Traits qui se transforment : '+mut.map(function(i){return (i+1)+(i?'ᵉ':'ᵉʳ');}).join(', ')+' (comptés à partir du bas). ○ marque un 9, ✕ marque un 6.'):'Aucun trait ne se transforme : le tirage donne un seul koua.'));
   box.appendChild(card);
+  var n=mut.length,keep=[0,1,2,3,4,5].filter(function(i){return mut.indexOf(i)<0;});
+  function key(d,txt){d.classList.add('key');var b=el('div','lire','★ '+esc(txt));d.insertBefore(b,d.firstChild);return d;}
+  var R=rule(h1,h2,n,mut,keep);
+  var rc=el('div','card regle');rc.appendChild(el('h3',null,'Le texte qui répond — règle de Tshou Hi'));
+  rc.appendChild(el('p',null,R.msg));
+  rc.appendChild(el('p','muted','Les textes à lire sont marqués d’une étoile ★ ci-dessous. Les autres aident à les comprendre.'));
+  box.appendChild(rc);
   var tx=el('div','card');tx.appendChild(el('h2',null,h1.n+'. '+esc(h1.name)));
-  tx.appendChild(secBlock('Formule du koua','',sOf(h1,'j')));
-  mut.forEach(function(i){tx.appendChild(secBlock(RANG[i]+' — valeur '+e.lines[i],'t',sOf(h1,String(i+1))));});
-  if(mut.length===6&&sOf(h1,'e'))tx.appendChild(secBlock('Les six traits se transforment','t',sOf(h1,'e')));
+  var j1=secBlock('Formule du koua','',sOf(h1,'j'));
+  if(n===0)key(j1,'Texte à lire');
+  if(n===3)key(j1,'Texte à lire — la situation présente');
+  tx.appendChild(j1);
+  var top=Math.max.apply(null,mut.length?mut:[0]);
+  mut.forEach(function(i){var d=secBlock(RANG[i]+' — valeur '+e.lines[i],'t',sOf(h1,String(i+1)));
+    if(n===1)key(d,'Texte à lire');
+    if(n===2)key(d,i===top?'Texte à lire — c’est lui qui domine':'Texte à lire');
+    tx.appendChild(d);});
+  if(n===6&&(h1.n===1||h1.n===2)&&sOf(h1,'e'))tx.appendChild(key(secBlock('Les six traits se transforment','t',sOf(h1,'e')),'Texte à lire'));
   box.appendChild(tx);
-  if(h2){var t2=el('div','card');t2.appendChild(el('h2',null,'Après transformation : '+h2.n+'. '+esc(h2.name)));t2.appendChild(secBlock('Formule du koua','m',sOf(h2,'j')));box.appendChild(t2);}
+  if(h2){var t2=el('div','card');t2.appendChild(el('h2',null,'Après transformation : '+h2.n+'. '+esc(h2.name)));
+    var j2=secBlock('Formule du koua','m',sOf(h2,'j'));
+    if(n===3)key(j2,'Texte à lire — l’issue');
+    if(n===6&&!(h1.n===1||h1.n===2))key(j2,'Texte à lire');
+    t2.appendChild(j2);
+    if(n===4||n===5){var low=Math.min.apply(null,keep);
+      keep.forEach(function(i){var d=secBlock(RANG[i]+' — trait qui ne se transforme pas','m',sOf(h2,String(i+1)));
+        key(d,n===4?(i===low?'Texte à lire — c’est lui qui domine':'Texte à lire'):'Texte à lire');t2.appendChild(d);});}
+    box.appendChild(t2);}
   var nc=el('div','card');nc.appendChild(el('label','lab','Vos notes sur ce tirage'));
   var ta=el('textarea');ta.rows=3;ta.value=e.note||'';ta.placeholder='Notes personnelles, enregistrées avec le tirage…';
   var st=el('div','muted');st.style.marginTop='6px';
